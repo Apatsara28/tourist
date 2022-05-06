@@ -1,0 +1,328 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<!-- Link library leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+crossorigin="" />
+<!-- W3 CSS template -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin="">
+</script>
+
+ <style>
+#mapid {
+height: 800px;
+}
+</style>
+<title>Tourist map</title>
+<h1 align='center'><b>สถานที่ท่องเที่ยว 10 เเห่ง ประเทศสวิซเซอร์แลนด์<b></h1>
+<p style="color:blue;"align='right'><strong><em> โดย นางสาวอภัสรา ทันชื่น.</em></strong></p>
+</head>
+<body style="background-image: url(https://i.pinimg.com/564x/31/66/eb/3166ebf7dd88f1d03d87184fe8cc6437.jpg);background-position: center;
+      background-repeat: no-repeat; background-size: cover;">
+
+<!-- แบ่งหน้าจอ -->
+<div class="w3-row">
+<div id="mapid" class="w3-half"></div>
+<div id="content" class="w3-half">
+<table class="w3-table w3-striped">
+<tr>
+<th>ชื่อแหล่งท่องเที่ยว</th>
+<th>ประเภท</th>
+<th>ระดับ</th>
+</tr>
+<tr>
+<td>น้ำตก A</td>
+<td>ธรรมชาติ</td>
+<td>A</td>
+</tr>
+</table>
+</div>
+</div>
+<!-- เรียกแผนที่ขึ้นมาแสดง -->
+<script>
+var map = L.map("mapid").setView([46.855995777596924,7.810108448483329],8);
+var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+var Esri_NatGeoWorldMap = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}")
+.addTo(map);
+var baseMaps ={
+  OSM:osm,
+  NGM:Esri_NatGeoWorldMap,
+};
+var tourpoint = {
+type: "FeatureCollection",
+name: "tour_plk",
+crs: {
+type: "name",
+properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" },
+},
+features: [
+{
+type: "Feature",
+properties: {
+Name: "Oeschinensee",
+Type: "ทะเลสาป",
+FID_1: 1358.0,
+
+level: "10/10",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[7.22924636773455,46.5580061259876]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "Dent de Savigny",
+Type: "ภูเขา",
+FID_1: 1357.0,
+
+level: "9/10",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[7.4443065069121985,46.922768290085685]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "Gurten",
+Type: "ภูเขา",
+FID_1: 1362.0,
+
+level: "8/10",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[8.585808150642714,47.39626170752622]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "Zoo Zürich",
+Type: "สวนสัตว์",
+FID_1: 1364.0,
+
+level: "7/10",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[10.126630861374332,46.88531301817588]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "Museum Tinguely",
+Type: "พิพิธภัณฑ์",
+FID_1: 1355.0,
+
+level: "6/10",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[7.620881052617717,47.56378447251393]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "Skilift Hohe Winde",
+Type: "กิจกรรมพิเศษ",
+FID_1: 1365.0,
+
+level: "8/10",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[7.621722325137706,47.351462832378274]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "Schrattenfluh",
+Type: "ภูเขา",
+FID_1: 733.0,
+
+level: "10/10",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[7.9872757765010265,46.852044182518114]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "Drunengalm",
+Type: "จุดชมวิว",
+FID_1: 1359.0,
+
+level: "8/10",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[7.636319891486948,46.662896383945515 ]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "Walenstadt",
+Type: "ทะเลสาป",
+FID_1: 603.0,
+
+level: "10/10",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[9.308699563686206,47.12694508027124]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "Mont Fort",
+Type: "ภูเขาหิมะ",
+FID_1: 611.0,
+
+level: "10/10",
+},
+geometry: { type: "MultiPoint", coordinates: [[7.321706819012791,46.09757461998917]] },
+},
+{
+type: "Feature",
+properties: {
+Name: "Musée d'Art et d'Histoire",
+Type: "พิพิพิธภัณฑ์",
+FID_1: 1370.0,
+
+level: "9/10",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[6.95253145315876,46.99807776206029]],
+},
+},
+],
+};
+var tourLayer = L.geoJSON(tourpoint, {
+pointToLayer: function (feature, latlng) {
+return L.marker(latlng).bindPopup(feature.properties.Name);
+},
+onEachFeature: function (feature, layer) {
+layer.on("mouseover", function () {
+document
+.getElementById(feature.properties.FID_1)
+.classList.add("w3-red");
+});
+
+ layer.on("mouseout", function () {
+document
+.getElementById(feature.properties.FID_1)
+.classList.remove("w3-red");
+});
+},
+}).addTo(map);
+var cont = "";
+cont += "<table class='w3-table w3-striped'>";
+cont += "<tr>";
+cont += "<th>ชื่อแหล่งท่องเที่ยว</th>";
+cont += "<th>ประเภท</th>";
+cont += "<th>ระดับ</th>";
+cont += "</tr>";
+for (let i in tourpoint.features) {
+cont += "<tr id=" + tourpoint.features[i].properties.FID_1 + ">";
+cont += "<td>" + tourpoint.features[i].properties.Name + "</td>";
+cont += "<td>" + tourpoint.features[i].properties.Type + "</td>";
+cont += "<td>" + tourpoint.features[i].properties.level + "</td>";
+cont += "</tr>";
+}
+cont += "</table>";
+console.log(cont);
+document.getElementById("content").innerHTML = cont;
+//create polygon
+var polygonGeoJson = {
+  "type": "FeatureCollection",
+   "features": [
+     {
+       "type": "Feature",
+       "properties": {},
+       "geometry": {
+         "type": "Polygon",
+         "coordinates": [
+           [
+             [
+               6.558837890625,
+               47.42065432071318
+             ],
+             [
+               5.657958984374999,
+               46.14939437647686
+             ],
+             [
+               8.3056640625,
+               45.49094569262732
+             ],
+             [
+               10.579833984375,
+               46.00459325574482
+             ],
+             [
+               10.48095703125,
+               47.42065432071318
+             ],
+             [
+               8.250732421875,
+               47.916342040161155
+             ],
+             [
+               6.558837890625,
+               47.42065432071318
+             ]
+           ]
+         ]
+       }
+     }
+   ]
+ }
+
+var polygonLayer = L.geoJSON(polygonGeoJson, {
+style: function (feature) {
+return { color: feature.properties.color };
+},
+onEachFeature: function (feature, layer) {
+layer.bindPopup(feature.properties.name);
+layer.on("mouseover", function () {
+layer.openPopup();
+});
+
+layer.on("mouseout", function () {
+layer.closePopup();
+});
+},
+});
+
+//group point+polygon layer
+var overlays = {
+สถานที่ท่องเที่ยว:tourLayer,
+ขอบเขตอุทยาน:polygonLayer
+};
+
+//Create layer control
+L.control.layers(baseMaps,overlays).addTo(map);
+</script>
+
+</body>
+</html>
